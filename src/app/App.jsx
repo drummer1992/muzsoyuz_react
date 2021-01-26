@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchDataIfLoggedIn } from '../actions/getProfileActions'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Auth from '../pages/auth/Auth'
 import Main from '../pages/main/Main'
@@ -16,6 +15,7 @@ import FilterPage from '../pages/findJobs/filters/FilterPage'
 import SortingPage from '../pages/findJobs/sorting/SortingPage'
 import Profile from '../pages/profile/Profile'
 import s from './App.module.css'
+import { fetchUser } from "../actions/user"
 
 
 const mapStateToProps = state => {
@@ -28,7 +28,7 @@ const mapStateToProps = state => {
 class App extends React.Component {
   componentDidMount() {
     if (localStorage.getItem('token')) {
-      this.props.dispatch(fetchDataIfLoggedIn())
+      this.props.dispatch(fetchUser())
     }
   }
 
@@ -58,6 +58,5 @@ class App extends React.Component {
     )
   }
 }
-
 
 export default connect(mapStateToProps)(App)
