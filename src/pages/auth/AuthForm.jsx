@@ -5,7 +5,6 @@ import { authValidator } from '../../validators'
 import { authenticateUser } from '../../actions/user'
 import BasicAuth from './BasicAuth'
 import { authPageRoute } from '../../actions/routingActions'
-import * as swal from '../../components/common/alerts'
 import s from './AuthForm.module.css'
 
 
@@ -54,8 +53,7 @@ class AuthForm extends BasicAuth {
     try {
       authValidator(name, value, prevValue)
       this.setState({ [name]: '' })
-    }
-    catch (e) {
+    } catch (e) {
       this.setState({ [name]: e.message })
     }
   }
@@ -198,11 +196,11 @@ class AuthForm extends BasicAuth {
       <div>
         {
           this.props.type === 'register'
-          ? this.drawRegForm()
-          : this.drawLoginForm()
+            ? this.drawRegForm()
+            : this.drawLoginForm()
         }
         {
-          this.handleRedirect(this.props?.user?.profile)
+          this.handleRedirect(this.props?.user)
         }
       </div>
     )

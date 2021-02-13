@@ -5,20 +5,14 @@ import SocialMedias from './SocialMedias'
 import s from './Auth.module.css'
 import logo from '../../assets/img/logo.svg'
 
-
-class Auth extends React.Component {
-
-  render() {
-    return (
-      <div className={s.wrapper}>
-        <div>
-          <NavLink to='/'><img src={logo} alt="Logo" className={s.logo}/></NavLink>
-        </div>
-        <AuthForm type={this.props.type}/>
-        <SocialMedias type={this.props.type}/>
-      </div>
-    )
-  }
-}
+const Auth = ({ type }) => (
+  <div className={s.wrapper}>
+    <div>
+      <NavLink to='/'><img src={logo} alt="Logo" className={s.logo}/></NavLink>
+    </div>
+    <AuthForm type={type}/>
+    <SocialMedias type={type}/>
+  </div>
+)
 
 export default Auth

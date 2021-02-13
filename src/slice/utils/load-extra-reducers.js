@@ -6,12 +6,6 @@ const defaultFulfilledReducer = (state, action) => {
   Object.assign(state, action.payload)
 }
 
-// const defaultFulfilledReducer = (state, action) => {
-//   let newState = Object.keys(action.payload).map((item, index) => {
-//     return item
-//   })
-// }
-
 const contextWrapper = (context, reducer) => (state, action) => {
   return reducer(context ? get(state, context) : state, action)
 }
@@ -41,12 +35,11 @@ export default function loadExtraReducers(reducer, extra) {
     }),
     [reducer.rejected] : contextWrapper(context, (state, action) => {
       state.loading = false
-      state.loaded = true
       state.status = STAGES.FAILED
 
       const e = action?.error
 
-      state.error = Array.isArray(e.message) ? e.message.join(', ') : e.message
+      state.error = Array.isArray(e?.message) ? e.message.join(', ') : e?.message
       rejectedReducer(state, action)
     }),
   }

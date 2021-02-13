@@ -2,8 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getTokenAfterOauth } from '../../actions/user'
 import BasicAuth from './BasicAuth'
-import * as swal from '../../components/common/alerts'
-
 
 const mapStateToProps = state => ({
   user: state.user,

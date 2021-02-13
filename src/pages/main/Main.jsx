@@ -5,7 +5,6 @@ import Header from '../../components/mainHeader/Header'
 import Footer from '../../components/mainFooter/Footer'
 import logo from '../../assets/img/logo.svg'
 import background from '../../assets/img/background_main.svg'
-import preloader from '../../assets/img/preloader.gif'
 import s from './Main.module.css'
 
 
@@ -21,9 +20,9 @@ class Main extends React.Component {
     this.props.dispatch(pageRoute('MAIN_PAGE', '/'))
   }
 
-  renderPage() {
+  render() {
     return (
-      <>
+      <div className={s.wrapper}>
         <div className={s.headerWrapper}>
           <Header/>
         </div>
@@ -36,21 +35,6 @@ class Main extends React.Component {
         <div className={s.footerWrapper}>
           <Footer/>
         </div>
-      </>
-    )
-  }
-
-  render() {
-    return (
-      <div className={s.wrapper}>
-        {/*{*/}
-        {/*  this.props.loading*/}
-        {/*  ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>*/}
-        {/*  : this.renderPage()*/}
-        {/*}*/}
-        {
-          this.renderPage()
-        }
       </div>
     )
   }

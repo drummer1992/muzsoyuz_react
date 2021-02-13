@@ -1,24 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router'
 import moment from 'moment'
 import { makeOffer } from '../../actions/offers'
 import { pageRoute } from '../../actions/routingActions'
 import { jobOfferValidator } from '../../validators'
-import * as swal from '../../components/common/alerts'
 import Header from '../../components/mainHeader/Header'
 import Footer from '../../components/mainFooter/Footer'
-import preloader from '../../assets/img/preloader.gif'
 import s from './OfferJob.module.css'
-import { STAGES } from '../../slice/utils/constants'
 
 
 const mapStateToProps = state => {
   return {
-    // loading   : state.authReducer.loading,
-    prevRoute : state.pageReducer.prevRoute,
-    user      : state.user.profile,
-    // offer     : state.offers,
+    prevRoute: state.pageReducer.prevRoute,
+    user     : state.user.profile,
   }
 }
 
@@ -62,8 +56,7 @@ class OfferJob extends React.Component {
     try {
       jobOfferValidator(name, value)
       this.setState({ [name]: '' })
-    }
-    catch (e) {
+    } catch (e) {
       return this.setState({ [name]: e.message })
     }
   }
@@ -230,14 +223,6 @@ class OfferJob extends React.Component {
   render() {
     return (
       <div>
-        {
-          this.props.user?.status !== STAGES.SUCCESS && <Redirect to='/login'/>
-        }
-        {/*{*/}
-        {/*  this.props.loading*/}
-        {/*  ? <div className={s.preLoader}><img alt="preloader" src={preloader}/></div>*/}
-        {/*  : this.renderPage()*/}
-        {/*}*/}
         {
           this.renderPage()
         }
